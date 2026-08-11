@@ -3,24 +3,87 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medel-ca <medel-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medel-ca <medel-ca@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 10:04:17 by medel-ca          #+#    #+#             */
-/*   Updated: 2026/08/07 13:00:05 by medel-ca         ###   ########.fr       */
+/*   Updated: 2026/08/11 10:13:34 by medel-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
+#include "Array.hpp"
 #include <iostream>
 
-int main( void )
+int main(int, char**)
 {
-    int array[] = {1, 2, 3, 4, 5};
-    iter(array, sizeof(array) / sizeof(array[0]), f);
-    iter(array, sizeof(array) / sizeof(array[0]), f);
-    char const array1[] = { 'a', 'b', 'c'};
-    iter(array1, sizeof(array1) / sizeof(array1[0]), f);
-    std::string array2[] = { "42", "adios", "hola"};
-    iter(array2, sizeof(array2) / sizeof(array2[0]), f);
-    return 0;
+	std::cout << "\033[33m" << std::endl << "Empty Array" << "\033[0m" << std::endl;
+	Array<int> emptyArray;
+	std::cout << "emptyArray size: " << emptyArray.size() << std::endl;
+	
+	
+	std::cout << "\033[33m" << std::endl << "Out of Bounce" << "\033[0m" << std::endl;
+	try {
+		std::cout << "emptyArray[5]: " << emptyArray[5] << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	std::cout << "\033[33m" << std::endl << "Int Array" << "\033[0m" << std::endl;
+	Array<int> intArray(5);
+	int i = 0;
+	while (i < 5) {
+		intArray[i] = i;
+		i++;
+	}
+	std::cout << "intArray size: " << intArray.size() << std::endl;
+	std::cout << "intArray: ";
+	i = 0;
+	while (i < 5) {
+		std::cout << intArray[i] << " ";
+		i++;
+	}
+	std::cout << std::endl;
+
+
+	std::cout << "\033[33m" << std::endl << "Double Array" << "\033[0m" << std::endl;
+	Array<double> doubleArray(10);
+	i = 0;
+    while (i < 10) {
+		doubleArray[i] = i / 2.0;
+		i++;
+	}
+	std::cout << "doubleArray size: " << doubleArray.size() << std::endl;
+	std::cout << "doubleArray: ";
+	i = 0;
+	while (i < 10) {
+		std::cout << doubleArray[i] << " ";
+		i++;
+	}
+	std::cout << std::endl;
+
+
+	std::cout << "\033[33m" << std::endl << "Copy Constructor unsing int array" << "\033[0m" << std::endl;
+    Array<int> intArrayCopy(intArray);
+    std::cout << "intArrayCopy size: " << intArrayCopy.size() << std::endl;
+    std::cout << "intArrayCopy: ";
+    i = 0;
+    while (i < 5) {
+        std::cout << intArrayCopy[i] << " ";
+        i++;
+    }
+    std::cout << std::endl;
+
+
+    std::cout << "\033[33m" << std::endl << "Assignment Operator unsing double array" << "\033[0m" << std::endl;
+    Array<double> doubleArrayAssignment = doubleArray;
+    std::cout << "doubleArrayAssignment size: " << doubleArrayAssignment.size() << std::endl;
+    std::cout << "doubleArrayAssignment: ";
+    i = 0;
+    while (i < 10) {
+        std::cout << doubleArrayAssignment[i] << " ";
+        i++;
+    }
+    std::cout << std::endl;
+
+	return (0);
 }
