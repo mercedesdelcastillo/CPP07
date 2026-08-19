@@ -5,17 +5,20 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = main.cpp
 OBJ = $(SRC:%.cpp=%.o)
+DPN = $(SRC:%.cpp=%.d)
 
 all: $(NAME)
+
+-include $(DPN)
 
 $(NAME):  $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $@
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+%.o: %.cpp Makefile
+	$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(DPN)
 
 fclean: clean
 	rm -f $(NAME)
