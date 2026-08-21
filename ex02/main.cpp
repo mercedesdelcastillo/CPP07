@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medel-ca <medel-ca@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: medel-ca <medel-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 10:04:17 by medel-ca          #+#    #+#             */
-/*   Updated: 2026/08/11 10:13:34 by medel-ca         ###   ########.fr       */
+/*   Updated: 2026/08/19 13:58:43 by medel-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int main(int, char**)
 	std::cout << "\033[33m" << std::endl << "Empty Array" << "\033[0m" << std::endl;
 	Array<int> emptyArray;
 	std::cout << "emptyArray size: " << emptyArray.size() << std::endl;
-	
 	
 	std::cout << "\033[33m" << std::endl << "Out of Bounce" << "\033[0m" << std::endl;
 	try {
@@ -65,6 +64,7 @@ int main(int, char**)
 	std::cout << "\033[33m" << std::endl << "Copy Constructor unsing int array" << "\033[0m" << std::endl;
     Array<int> intArrayCopy(intArray);
     std::cout << "intArrayCopy size: " << intArrayCopy.size() << std::endl;
+	intArrayCopy[0] = 10;
     std::cout << "intArrayCopy: ";
     i = 0;
     while (i < 5) {
@@ -77,6 +77,7 @@ int main(int, char**)
     std::cout << "\033[33m" << std::endl << "Assignment Operator unsing double array" << "\033[0m" << std::endl;
     Array<double> doubleArrayAssignment = doubleArray;
     std::cout << "doubleArrayAssignment size: " << doubleArrayAssignment.size() << std::endl;
+	doubleArrayAssignment[0] = 2.3;
     std::cout << "doubleArrayAssignment: ";
     i = 0;
     while (i < 10) {

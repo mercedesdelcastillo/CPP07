@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medel-ca <medel-ca@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: medel-ca <medel-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 13:45:33 by medel-ca          #+#    #+#             */
-/*   Updated: 2026/08/11 09:59:57 by medel-ca         ###   ########.fr       */
+/*   Updated: 2026/08/19 13:53:15 by medel-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ template <typename T> Array<T>::Array(void) : elements(NULL), n(0)
 }
 template <typename T> Array<T>::Array(unsigned int n) : elements(new T[n]()), n(n)
 {
-
 }
 
-template <typename T> Array<T>::Array(const Array &other) : elements(new T[other.n]()), n(other.n)
+template <typename T> Array<T>::Array(const Array &other) : elements(new T[other.n]), n(other.n)
 {
     for (unsigned int i = 0; i < n; i++)
         this->elements[i] = other.elements[i];
